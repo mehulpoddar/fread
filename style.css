@@ -233,7 +233,7 @@ body {
 
 /* ===== Study Stage ===== */
 .card-list {
-  max-width: 700px;
+  max-width: 900px;
   margin: 28px auto;
   padding: 0 24px 80px;
   display: flex;
@@ -422,9 +422,23 @@ body {
 }
 
 .breakdown-table tbody {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .breakdown-table tbody {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .breakdown-table tr {
+    border-bottom: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+  }
 }
 
 .breakdown-table tr {
