@@ -398,8 +398,18 @@
     });
     table.appendChild(tbody);
 
+    // Collapse button
+    var collapseBtn = document.createElement('button');
+    collapseBtn.className = 'btn-collapse';
+    collapseBtn.textContent = '\u25B2';
+    collapseBtn.addEventListener('click', function () {
+      var details = container.closest('details');
+      if (details) details.removeAttribute('open');
+    });
+
     container.innerHTML = '';
     container.appendChild(table);
+    container.appendChild(collapseBtn);
   }
 
   function buildClickableWords(container, text) {
