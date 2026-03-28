@@ -199,9 +199,10 @@
     const prompt =
       'Translate every single English sentence into French separately. Do not condense anything.' +
       'For each sentence, provide a "breakdown" for every single French word:' +
-      '(i) english word (ii) origin (iii) a key grammar concept or verb conjugation used.\n\n' +
+      '(i) english word (ii) origin (iii) a key grammar concept or verb conjugation used ' +
+      '(iv) a short, clever memory tip to help an English speaker remember the French word (mnemonic, sound-alike, visual association, etc).\n\n' +
       'Format: Return ONLY a JSON array:\n' +
-      '[{ "en": "...", "fr": "...", "breakdown": [{ "word": "French word", "en": "English equivalent", "origin": "etymology or root", "grammar": "grammar note" }] }]\n\n' +
+      '[{ "en": "...", "fr": "...", "breakdown": [{ "word": "French word", "en": "English equivalent", "origin": "etymology or root", "grammar": "grammar note", "tip": "memory tip" }] }]\n\n' +
       'Text:\n' + text;
 
     const url =
@@ -352,7 +353,7 @@
     // Header
     var thead = document.createElement('thead');
     var headRow = document.createElement('tr');
-    ['French', 'English', 'Origin', 'Grammar'].forEach(function (label) {
+    ['French', 'English', 'Origin', 'Grammar', 'Remember'].forEach(function (label) {
       var th = document.createElement('th');
       th.textContent = label;
       headRow.appendChild(th);
@@ -386,8 +387,8 @@
       tdWord.appendChild(wordSpan);
       row.appendChild(tdWord);
 
-      // English, Origin, Grammar
-      ['en', 'origin', 'grammar'].forEach(function (key) {
+      // English, Origin, Grammar, Tip
+      ['en', 'origin', 'grammar', 'tip'].forEach(function (key) {
         var td = document.createElement('td');
         td.textContent = entry[key] || '';
         row.appendChild(td);
